@@ -7,51 +7,55 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
         }
         .gallery {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .gallery img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        .gallery img:hover {
-            border: 2px solid #007bff;
+            flex-direction: column;
+            align-items: center;
         }
         .main-image {
-            margin: 20px 0;
-        }
-        .main-image img {
-            width: 500px;
+            width: 400px;
             height: 300px;
+            border: 2px solid #ccc;
+            margin-bottom: 20px;
             object-fit: cover;
+        }
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnails img {
+            width: 100px;
+            height: 75px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .thumbnails img:hover {
+            border-color: #007bff;
         }
     </style>
 </head>
 <body>
-    <h1>Image Gallery</h1>
-    <div class="main-image">
-        <img id="displayedImage" src="https://via.placeholder.com/500x300" alt="Main Image">
-    </div>
     <div class="gallery">
-        <img src="https://via.placeholder.com/500x300/FF0000" alt="Red" onmouseover="changeImage(this)">
-        <img src="https://via.placeholder.com/500x300/00FF00" alt="Green" onmouseover="changeImage(this)">
-        <img src="https://via.placeholder.com/500x300/0000FF" alt="Blue" onmouseover="changeImage(this)">
-        <img src="https://via.placeholder.com/500x300/FFFF00" alt="Yellow" onmouseover="changeImage(this)">
+        <img id="mainImage" class="main-image" src="https://via.placeholder.com/400x300" alt="Main Image">
+        <div class="thumbnails">
+            <img src="https://via.placeholder.com/400x300/ff7f7f" alt="Image 1" onmouseover="changeImage(this.src)">
+            <img src="https://via.placeholder.com/400x300/7f7fff" alt="Image 2" onmouseover="changeImage(this.src)">
+            <img src="https://via.placeholder.com/400x300/7fff7f" alt="Image 3" onmouseover="changeImage(this.src)">
+        </div>
     </div>
 
     <script>
-        function changeImage(element) {
-            const displayedImage = document.getElementById('displayedImage');
-            displayedImage.src = element.src;
-            displayedImage.alt = element.alt;
+        function changeImage(newSrc) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = newSrc;
         }
     </script>
 </body>
